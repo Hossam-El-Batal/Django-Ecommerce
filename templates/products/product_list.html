@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Products</h1>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        {% for product in products %}
+            <div style="border: 1px solid #ddd; border-radius: 8px; padding: 10px; text-align: center; width: 200px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); background-color: #fff;">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 100%; height: auto; border-radius: 4px;">
+                <p style="font-size: 1.2em; margin: 10px 0;">{{ product.name }}</p>
+                <p style="color: #333; font-size: 1.1em;">${{ product.price }}</p>
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">{{ product.description }}</p>
+                <a href="{% url 'add_to_cart' product.id %}" style="display: inline-block; padding: 10px 15px; font-size: 1em; color: #fff; background-color: #007bff; border: none; border-radius: 5px; text-decoration: none; transition: background-color 0.3s;">Add to Cart</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+<!-- {% extends 'base.html' %}
 
 {% block title %}Your Cart{% endblock %}
 
@@ -8,6 +8,27 @@
     {% if cart_items %}
         {% for item in cart_items %}
         <li>{{ item.orderName }} - Status: {{ item.status }}</li>
+        {% endfor %}
+    {% else %}
+        <li>Your cart is empty.</li>
+    {% endif %}
+</ul>
+{% endblock %} -->
+{% extends 'base.html' %}
+
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<h1>Your Cart</h1>
+<ul>
+    {% if cart_items %}
+        {% for item in cart_items %}
+        <li>
+            {{ item.name }} - Price: {{ item.price }}
+            {% if item.image %}
+                <img src="{{ item.image }}" alt="{{ item.name }}" style="width: 100px;" />
+            {% endif %}
+        </li>
         {% endfor %}
     {% else %}
         <li>Your cart is empty.</li>
