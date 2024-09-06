@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from mart import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tracking-system/',include("tracking_system.urls")),
-]
+    # path('tracking-system/',include("tracking_system.urls")),
+    # path('', views.list_items, name='list_items'),
+    path('', include('mart.urls')),
+    path('login/', include('login.urls')),
+    path('products/', include('products.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

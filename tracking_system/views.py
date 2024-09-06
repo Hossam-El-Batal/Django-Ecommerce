@@ -32,5 +32,3 @@ def add(request):
    
    return JsonResponse({"message": "http method not supported"})
 
-def index(request):
-    return JsonResponse({})
